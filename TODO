@@ -1,0 +1,29 @@
+------------------------------------------------ showstopper
+* API cleanup
+	check function names (consistency, appropriateness)
+	file sizes, offsets: type big enough? (no, zip64)
+	don't expose struct zip_meta
+	clean up error handling and error code setting (get rid of zip_err)
+	zip_{add,replace}*: don't use struct zip_meta
+	don't expose zip_free_meta, zip_meta_new
+	defines for compression method
+* documentation: zip_add*, zip_replace*, zip_{,_file}get_error,
+	zip_error_sys_type, zip_get_num_files, zip_error_str
+* regression tests
+* code review
+* README
+------------------------------------------------ others
+* fix warnings in zipcmp
+* zipcmp: add option for file content comparison
+* support for zip64 (large file)
+
+* don't allow the same filename twice in a zip (when adding/replacing)
+* append to files (for self-extracting files)
+* add custom compression function support
+* zip_replace_zip: remember compression method, recompress if different speced
+* better closing of zip-files
+* close even if error...
+* update-zip (instead of close, reopen)
+* support for old compression methods?????
+* zip-comment functions
+* better error handling, more verbose
