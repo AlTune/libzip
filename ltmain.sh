@@ -1,0 +1,1 @@
+/usr/pkg/share/libtool/config/ltmain.sh
