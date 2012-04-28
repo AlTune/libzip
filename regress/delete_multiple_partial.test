@@ -1,0 +1,5 @@
+# delete some entries in zip archive
+program modify
+return 0
+args testfile.zzip delete 1 delete 3
+file testfile.zzip testcomment.zip testcomment13.zip
