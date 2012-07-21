@@ -1,0 +1,114 @@
+API Plans
+=========
+
+Encryption
+----------
+* struct zip *zip_open_encrypted(const char *path, int flags, const char *password, int *errorp);
+* int zip_set_encryption(struct zip *archive, zip_uint64_t idx, zip_uint16_t method, const char *password);
+* void zip_set_archive_encryption(struct zip *archive, zip_uint16_t method, const char *password);
+
+API Issues
+==========
+* compression/crypt implementations: how to set error code on failure
+* compression/crypt error messages a la ZIP_ER_ZLIB (no detailed info passing)
+* check arguments for every entry point into libzip
+
+
+Features
+========
+! Document API changes
+! Compare headers from last release and next for API changes
+* do not compress if storing is smaller
+
+! test extra fields api
+* I/O methods
+* support streaming output (creating new archive to e.g. stdout)
+* add functions to:
+  . set last modification time for entry
+  . read/set ASCII file flag? (wiz: more general options?)
+  . get/set "version made by" and "external file attributes"
+    (can be used to decide if an entry is a directory, if the
+     archive was created on DOS)
+* zip_commit (to finish changes without closing archive)
+* add custom compression function support
+* zip_source_zip: allow rewinding
+* zip_source_seek, zip_fseek
+* zipcmp: add option for file content comparison
+* zipcmp: compare bit flags if paranoid
+* consistency
+  . compare number of entries with cdir value
+  . for stored files, test compressed = uncompressed
+  . data descriptor
+  . local headers come before central dir
+
+- support for old compression methods?????
+- append to files (for self-extracting files)
+
+
+Bugs
+====
+! check inconsistent file test case result
+! decide if open_filename_duplicate.test is ok or should report an error
+* split zip archive torrentzip state from user requested torrentzip state
+* check for limits imposed by format (central dir size, file size, extra fields, ...)
+* _zip_u2d_time: handle localtime(3) failure
+* missing -Wl,-R in pkg-config file
+* POSIX: zip_open: check whether file can be created and fail if not
+* POSIX: fix permissions of new file to match old one
+* fix inconsistent usage of valid flags (not checked in many places)
+* cdr == NULL -> ER_NOENT vs. idx > cdir->nentry -> ER_INVAL inconsistent (still there?)
+* torrentzip broken on NetBSD/amd64 6.99
+
+
+Cleanup
+=======
+* get rid of zip_get_{compression,encryption}_implementation
+* use zip_*int*_t internally
+* completely get rid of off_t
+* clean up lint(1) warnings?
+
+
+Test Case Issues
+================
+! test reading of Unicode Extra Fields
+* test calls against old API
+* run regression tests also from CMake framework
+* rename file to dir/ and vice versa (fails)
+* fix comment test to be newline insensitive
+* zip64 test case ideas (but how to provide comparison and input files?)
+  Create files with:
+  * compressed < 4GB, uncompressed > 4GB
+  * compressed > 4GB
+  * offset of file or central directory > 4GB
+
+* (add, replace)
+	add to empty zip
+	add to existing zip
+	add w/ existing file name [E]
+	replace ok
+	replace w/ illegal index [E]
+	replace w/ deleted name [E]
+	unchange added/replaced file
+* (close)
+	copy zip file
+	open copy
+	rename, delete, replace, add w/ new name, add w/ deleted name
+	close
+	zipcmp copy expected
+	remove copy
+* (error_get)
+* (error_get_sys_type)
+* (error_to_str)
+* (extra_fields)
+* (file_error_get)
+* (file_strerror)
+* (replace)
+* (source_buffer)
+* (source_file)
+* (source_filep)
+* (source_free)
+* (source_function)
+* (source_zip)
+* (strerror)
+* (unchange)
+* (unchange_all)
