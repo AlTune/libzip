@@ -30,7 +30,7 @@ nuget{
     files{
 	includelibzip: {
 		#destination = ${d_include};
-		"lib\*.h";
+		{ "lib\*.h", "build\zipconf.h" };
 	} 
 
 	[x86,v140,debug] {

@@ -1,3 +1,6 @@
+*.out.autoconfig
+*.nupkg
+*.opendb
 zip.dir/
 .vs/
 CMakeFiles/

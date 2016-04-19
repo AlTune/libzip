@@ -102,6 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="Debug";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)zip.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Debug\";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -146,6 +147,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="Debug";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)zip.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Debug\";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -190,6 +192,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
+      <ProgramDataBaseFileName>$(IntDir)zip.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Release\";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -234,6 +237,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
+      <ProgramDataBaseFileName>$(IntDir)zip.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Release\";zip_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
