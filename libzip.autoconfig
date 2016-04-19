@@ -1,0 +1,60 @@
+configurations {
+    Toolset { 
+        key : "PlatformToolset"; 
+        choices: { v140 };  
+        // Explicitly Not including pivot variants:  "WindowsKernelModeDriver8.0", "WindowsApplicationForDrivers8.0", "WindowsUserModeDriver8.0" 
+
+        // We're normalizing out the concept of the v140 platform -- Overloading the $(PlatformToolset) variable for additional pivots was a dumb idea.
+        v140.condition = "( $(PlatformToolset.ToLower().IndexOf('v140')) > -1 Or '$(PlatformToolset.ToLower())' == 'windowskernelmodedriver8.0' Or '$(PlatformToolset.ToLower())' == 'windowsapplicationfordrivers8.0' Or '$(PlatformToolset.ToLower())' == 'windowsusermodedriver8.0' )";
+    };
+}
+
+nuget{
+    nuspec{
+        id = libzip;
+        version : 1.1.2.{build};
+        title: libzip;
+        authors: {Dieter Baron and Thomas Klausner};
+        owners: {quamotion};
+        licenseUrl: "http://www.nih.at/libzip/LICENSE.html";
+        projectUrl: "http://www.nih.at/libzip/";
+        iconUrl: "http://www.nuget.org/Content/Images/packageDefaultIcon-50x50.png";
+        requireLicenseAcceptance:false;
+        description: "A C library for reading, creating, and modifying zip archives..";
+        summary: "This is libzip, a C library for reading, creating, and modifying zip archives. Files can be added from data buffers, files, or compressed data copied directly from other zip archives. Changes made without closing the archive can be reverted.";
+        copyright: "http://www.nih.at/libzip/LICENSE.html";
+        releaseNotes: "Release 1.1.2 of libzip. See https://github.com/libimobiledevice-win32/libzip/tree/msvc-1.1.2 for more.";
+        tags: { libzip, native };
+    }
+
+    files{
+	includelibzip: {
+		#destination = ${d_include}libzip;
+		"lib\*.h";
+	} 
+
+	[x86,v140,debug] {
+            lib: Win32\Debug\zip.lib;
+            bin: { "Win32\Debug\zip.dll" };
+            symbols: Win32\Debug\zip.pdb;
+        }
+
+	[x86,v140,release] {
+            lib: Win32\Release\zip.lib;
+            bin: { "Win32\Release\zip.dll" };
+            symbols: Win32\Release\zip.pdb;
+        }
+
+	[x64,v140,debug] {
+            lib: x64\Debug\zip.lib;
+            bin: { "x64\Debug\zip.dll" };
+            symbols: x64\Debug\zip.pdb;
+        }
+
+	[x64,v140,release] {
+            lib: x64\Release\zip.lib;
+            bin: { "x64\Release\zip.dll" };
+            symbols: x64\Release\zip.pdb;
+        }
+    }
+}

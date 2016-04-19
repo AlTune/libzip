@@ -5,6 +5,8 @@ build/
 *.user
 packages/
 vstudio/zlib/
+Win32/
+x64/
 (^|/)Makefile$
 (^|/)Makefile.in$
 /.deps/
